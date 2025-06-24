@@ -17,6 +17,9 @@ export default defineConfig({
 				return filePath.endsWith('css');
 			},
 		},
+		server: {
+			allowedHosts: true
+		},
 	},
 	image: {
 		// Update to your own image domains
