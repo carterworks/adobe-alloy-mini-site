@@ -1,18 +1,18 @@
 import type { APIPersonalization, AlloyEvent } from '../types';
 
-const createLogger = (console: Console) => {
+const createLogger = ({ console, instanceName }: { console: Console; instanceName: string }) => {
 	return {
 		info(...args: unknown[]) {
-			console.info(...args);
+			console.info(`[${instanceName}]`, ...args);
 		},
 		error(...args: unknown[]) {
-			console.error(...args);
+			console.error(`[${instanceName}]`, ...args);
 		},
 		warn(...args: unknown[]) {
-			console.warn(...args);
+			console.warn(`[${instanceName}]`, ...args);
 		},
 		debug(...args: unknown[]) {
-			console.debug(...args);
+			console.debug(`[${instanceName}]`, ...args);
 		},
 	};
 };
@@ -87,8 +87,9 @@ const createRenderPersonalizations = ({
 	};
 };
 
-const createAlloy = () => {
-	const logger = createLogger(console);
+const createAlloy = (instanceName: string) => {
+	const logger = createLogger({ console, instanceName });
+	// TODO: create a datastore to save options and configurations
 
 	const commandDependencies = {
 		logger,
@@ -120,4 +121,5 @@ const createAlloy = () => {
 	};
 };
 
-window['alloy'] = createAlloy();
+const instanceName = 'alloy';
+window[instanceName] = createAlloy(instanceName);
