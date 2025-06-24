@@ -6,20 +6,14 @@
 	"engines": {
 		"node": "20.17.0"
 	},
-	"packageManager": "pnpm@9.10.0+sha512.73a29afa36a0d092ece5271de5177ecbf8318d454ecd701343131b8ebc0c1a91c487da46ab77c8e596d6acf1461e3594ced4becedf8921b074fbd8653ed7051c",
 	"scripts": {
-		"dev:ci": "doppler run pnpm openapi-ts && doppler run astro dev",
 		"dev": "astro dev",
 		"start": "astro dev",
-		"build:ci": "pnpm openapi-ts && pnpm astro build",
-		"build": "pnpm astro build",
 		"astro": "astro",
 		"lint": "astro sync && run-s --continue-on-error lint:*",
 		"lint:biome": "biome lint src",
 		"lint:astro": "astro check",
 		"lint:types": "tsc -b",
-		"test:e2e": "playwright test",
-		"test:unit": "vitest",
 		"format": "run-s --continue-on-error format:*",
 		"format:biome": "biome check . --apply",
 		"format:prettier": "prettier . --cache --write --list-different"

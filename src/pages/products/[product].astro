@@ -1,17 +1,17 @@
 ---
+import { getImage } from 'astro:assets';
+import { getProductById } from 'storefront:client';
 import Card from '~/components/ui/Card.tsx';
+import { applyDefaultCacheHeaders } from '~/config.ts';
+import { AddToCartForm } from '~/features/cart/AddToCartForm.tsx';
 import CollectionSection from '~/features/collection/CollectionSection.astro';
 import ProductCarouselSection from '~/features/product/ProductCarouselSection.astro';
 import { ProductDetailDescriptionDialog } from '~/features/product/ProductDetailDescriptionDialog.tsx';
 import { ProductImageCarousel } from '~/features/product/ProductImageCarousel.tsx';
 import { ProductImageSwitcher } from '~/features/product/ProductImageSwitcher.tsx';
-import { applyDefaultCacheHeaders } from '~/config.ts';
-import { AddToCartForm } from '~/features/cart/AddToCartForm.tsx';
-import PrimaryLayout from '~/layouts/PrimaryLayout.astro';
-import { getProductById } from 'storefront:client';
-import { unwrap } from '~/lib/util.ts';
-import { getImage } from 'astro:assets';
 import { ProductPrice } from '~/features/product/ProductPrice.tsx';
+import PrimaryLayout from '~/layouts/PrimaryLayout.astro';
+import { unwrap } from '~/lib/util.ts';
 
 applyDefaultCacheHeaders(Astro.response.headers);
 

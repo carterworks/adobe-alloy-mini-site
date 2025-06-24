@@ -97,7 +97,7 @@ async function createOrderFromStripe(
 			shippingPrice:
 				typeof session.shipping_cost === 'number'
 					? session.shipping_cost
-					: session.shipping_cost?.amount_total ?? 0,
+					: (session.shipping_cost?.amount_total ?? 0),
 			lineItems: lineItems.map((item) => {
 				const metadata = stripeProductMetadataSchema.parse(
 					// verbose checks for a clearer error message

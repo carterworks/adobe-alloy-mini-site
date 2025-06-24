@@ -1,28 +1,32 @@
-import type { APIRoute } from "astro";
-import type { APIPersonalization } from "../../../types";
-import { addNetworkJitter } from "~/lib/util.ts";
+import type { APIRoute } from 'astro';
+import { addNetworkJitter } from '~/lib/util.ts';
+import type { APIPersonalization } from '../../../types';
 
 export const GET: APIRoute = async ({ request }) => {
-  const fail = await addNetworkJitter();
-  if (fail) {
-    return new Response(null, {
-      status: 500,
-    });
-  }
-  const trackingId = request.headers.get("Cookie")?.split("; ")?.find(cookie => cookie.startsWith("tracking-id="))?.split("=")[1];
-  if (!trackingId) {
-    return new Response(null, {
-      status: 401,
-    });
-  }
+	const fail = await addNetworkJitter();
+	if (fail) {
+		return new Response(null, {
+			status: 500,
+		});
+	}
+	const trackingId = request.headers
+		.get('Cookie')
+		?.split('; ')
+		?.find((cookie) => cookie.startsWith('tracking-id='))
+		?.split('=')[1];
+	if (!trackingId) {
+		return new Response(null, {
+			status: 401,
+		});
+	}
 
-  const personalizations: APIPersonalization[] = [
-    {
-      type: "replaceHtml",
-      selector: "header.breakout h1",
-      html: `<h1 class="max-w-sm">Special Deal for You!</h1>
+	const personalizations: APIPersonalization[] = [
+		{
+			type: 'replaceHtml',
+			selector: 'header.breakout h1',
+			html: `<h1 class="max-w-sm">Special Deal for You!</h1>
              <p class="text-xl font-semibold mt-2 max-w-md">Limited time offer - Don't miss out!</p>`,
-      css: `
+			css: `
         header.breakout {
           background-image: url('https://api.unsplash.com/photos/random/?orientation=landscape&query=business');
           background-size: cover;
@@ -38,14 +42,14 @@ export const GET: APIRoute = async ({ request }) => {
           color: #fff;
           text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
         }
-      `
-    }
-  ];
+      `,
+		},
+	];
 
-  return new Response(JSON.stringify(personalizations), {
-    status: 200,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+	return new Response(JSON.stringify(personalizations), {
+		status: 200,
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	});
 };

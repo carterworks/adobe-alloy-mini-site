@@ -7,7 +7,7 @@ during an interview process to test the candidate's ability to work with Analyti
 
 1. Clone the repository, install the dependencies, and run the development server (`dev` script).
 2. Open [`public/alloy-mini.ts`](./public/alloy-mini.ts)
-3. Take it in. 
+3. Take it in.
 4. Start implementing a TODO
 
 API endpoints are defined in [`src/pages/api/send-event.ts`](./src/pages/api/send-event.ts) and [`src/pages/api/personalizations.ts`](./src/pages/api/personalizations.ts) but should not generally need to be modified.
