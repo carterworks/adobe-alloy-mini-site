@@ -22,3 +22,17 @@ function safeStringify(value: unknown): string {
 export function clamp(num: number, lower: number, upper: number) {
 	return Math.max(lower, Math.min(num, upper));
 }
+
+export function random(min: number, max: number) {
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+export function sleep(ms: number) {
+	return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+export async function addNetworkJitter(failureRate: number = 0.45): Promise<boolean> {
+	await sleep(random(750, 3750));
+	const fail = Math.random() < failureRate;
+	return fail;
+}
