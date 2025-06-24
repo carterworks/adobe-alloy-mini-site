@@ -87,7 +87,7 @@ const createRenderPersonalizations = ({
 	};
 };
 
-window['alloy'] = (command: string, ...args: unknown[]) => {
+const createAlloy = () => {
 	const logger = createLogger(console);
 
 	const commandDependencies = {
@@ -111,6 +111,13 @@ window['alloy'] = (command: string, ...args: unknown[]) => {
 			logger.error('Command not found', commandName);
 			throw new Error(`Command not found: ${commandName}`);
 		}
+		if (!command.optionsValidator(args)) {
+			logger.error('Invalid arguments', args);
+			throw new Error(`Invalid arguments: ${args}`);
+		}
+		logger.debug('Executing command', commandName, 'with arguments', args);
 		return command.handler(args);
 	};
 };
+
+window['alloy'] = createAlloy();
