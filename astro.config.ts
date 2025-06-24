@@ -25,6 +25,7 @@ export default defineConfig({
 			'shop-next.astro.build',
 			'shop.astro.build',
 			'main--astro-swag-shop.netlify.app',
+			'csb.app'
 		],
 	},
 	experimental: {

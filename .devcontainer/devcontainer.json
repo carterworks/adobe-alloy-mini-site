@@ -1,0 +1,43 @@
+{
+	"name": "Astro Shop Dev Container",
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:1-20-bullseye",
+	"features": {
+		"ghcr.io/devcontainers/features/git:1": {},
+		"ghcr.io/devcontainers/features/github-cli:1": {}
+	},
+	"postCreateCommand": "npm ci",
+	"forwardPorts": [4321],
+	"portsAttributes": {
+		"4321": {
+			"label": "Astro Dev Server",
+			"onAutoForward": "notify"
+		}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"astro-build.astro-vscode",
+				"bradlc.vscode-tailwindcss",
+				"esbenp.prettier-vscode",
+				"biomejs.biome",
+				"ms-playwright.playwright",
+				"solidjs.vscode-solid",
+				"stripe.vscode-stripe",
+				"ms-vscode.vscode-typescript-next"
+			],
+			"settings": {
+				"editor.defaultFormatter": "biomejs.biome",
+				"editor.formatOnSave": true,
+				"editor.codeActionsOnSave": {
+					"quickfix.biome": "explicit",
+					"source.organizeImports.biome": "explicit"
+				},
+				"[astro]": {
+					"editor.defaultFormatter": "astro-build.astro-vscode"
+				},
+				"typescript.preferences.importModuleSpecifier": "relative"
+			}
+		}
+	},
+	"remoteUser": "node"
+} 
