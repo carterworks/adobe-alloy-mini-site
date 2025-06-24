@@ -6,7 +6,7 @@ during an interview process to test the candidate's ability to work with Analyti
 # Candidate Instructions
 
 1. Clone the repository, install the dependencies, and run the development server (`dev` script).
-2. Open [`public/alloy-mini.ts`](./public/alloy-mini.ts)
+2. Open [`src/alloy-mini.ts`](./src/alloy-mini.ts)
 3. Take it in.
 4. Start implementing a TODO
 

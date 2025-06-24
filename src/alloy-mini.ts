@@ -106,6 +106,7 @@ const createAlloy = (instanceName: string) => {
 	for (const command of commands) {
 		commandRegistry.set(command.name, command);
 	}
+	logger.info('Alloy instance created', { instanceName });
 	return async (commandName: string, ...args: unknown[]): Promise<void> => {
 		const command = commandRegistry.get(commandName);
 		if (!command) {
