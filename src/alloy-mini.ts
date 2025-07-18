@@ -1,3 +1,4 @@
+
 import type { APIPersonalization, AlloyEvent } from '../types';
 
 const createLogger = ({ console, instanceName }: { console: Console; instanceName: string }) => {
@@ -90,7 +91,7 @@ const createRenderPersonalizations = ({
 	};
 };
 
-const createAlloy = (instanceName: string) => {
+export const createAlloy = (instanceName: string) => {
 	const logger = createLogger({ console, instanceName });
 	// TODO: create a datastore to save options and configurations
 
@@ -125,5 +126,20 @@ const createAlloy = (instanceName: string) => {
 	};
 };
 
-const instanceName = 'alloy';
-window[instanceName] = createAlloy(instanceName);
+function isStringArr(arr: unknown): arr is string[] {
+	return Array.isArray(arr) && arr.every(el => typeof el === "string");
+}
+
+function init() {
+	const instancesNames = window.__alloyNS;
+	if (!isStringArr(instancesNames)) {
+		throw new Error("window.__alloyNS must be of type Array<string>");
+	}
+
+	for (const name of instancesNames) {
+		window[name] = createAlloy(name);
+		document.dispatchEvent(new Event(`alloy:${name}:ready`));
+	}
+}
+
+init();
