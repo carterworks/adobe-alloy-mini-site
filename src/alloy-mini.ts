@@ -24,6 +24,9 @@ interface Command<CommandOptions = unknown, CommandReturnType = void> {
 	handler: (args: CommandOptions) => Promise<CommandReturnType>;
 }
 
+/**
+ * @example window.alloy("configure", { datastreamId: "929ad39c", orgId: "92aed92f@AdobeOrg" });
+ */
 interface ConfigureArgs {
 	datastreamId: string;
 	orgId: string;
