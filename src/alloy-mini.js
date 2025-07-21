@@ -1,45 +1,27 @@
-
-import type { APIPersonalization, AlloyEvent } from '../types';
-
-const createLogger = ({ console, instanceName }: { console: Console; instanceName: string }) => {
+const createLogger = ({ console, instanceName }) => {
 	return {
-		info(...args: unknown[]) {
+		info(...args) {
 			console.info(`[${instanceName}]`, ...args);
 		},
-		error(...args: unknown[]) {
+		error(...args) {
 			console.error(`[${instanceName}]`, ...args);
 		},
-		warn(...args: unknown[]) {
+		warn(...args) {
 			console.warn(`[${instanceName}]`, ...args);
 		},
-		debug(...args: unknown[]) {
+		debug(...args) {
 			console.debug(`[${instanceName}]`, ...args);
 		},
 	};
 };
-type Logger = ReturnType<typeof createLogger>;
-
-interface Command<CommandOptions = unknown, CommandReturnType = void> {
-	name: string;
-	optionsValidator: (options: unknown) => options is CommandOptions;
-	handler: (args: CommandOptions) => Promise<CommandReturnType>;
-}
-
-/**
- * @example window.alloy("configure", { datastreamId: "929ad39c", orgId: "92aed92f@AdobeOrg" });
- */
-interface ConfigureArgs {
-	datastreamId: string;
-	orgId: string;
-}
-const createConfigure = ({ logger }: { logger: Logger }): Command<ConfigureArgs> => {
+const createConfigure = ({ logger }) => {
 	return {
 		name: 'configure',
-		optionsValidator(options): options is ConfigureArgs {
+		optionsValidator(options) {
 			// TODO: reject if the datastreamId or orgId are missing
-			return true;
+			return options?.datastreamId instanceof String && options?.orgId instanceof String;
 		},
-		async handler(args: ConfigureArgs) {
+		async handler(args) {
 			logger.info(
 				'Configuring Alloy with datastreamId',
 				args.datastreamId,
@@ -50,33 +32,27 @@ const createConfigure = ({ logger }: { logger: Logger }): Command<ConfigureArgs>
 		},
 	};
 };
-
-const createSendEvent = ({ logger }: { logger: Logger }): Command<AlloyEvent> => {
+const createSendEvent = ({ logger }) => {
 	return {
 		name: 'sendEvent',
-		optionsValidator(options): options is AlloyEvent {
+		optionsValidator(options) {
 			// TODO: reject if the eventName or eventProperties are missing
 			return false;
 		},
-		async handler(args: AlloyEvent) {
+		async handler(args) {
 			logger.info('Sending event', args.eventName, 'with properties', args.eventProperties);
 			// TODO: send the event to the server
 			const API_ENDPOINT = '/api/send-event';
 		},
 	};
 };
-
-const createRenderPersonalizations = ({
-	logger,
-}: {
-	logger: Logger;
-}): Command<{}, APIPersonalization[]> => {
+const createRenderPersonalizations = ({ logger }) => {
 	return {
 		name: 'renderPersonalizations',
-		optionsValidator(options): options is {} {
+		optionsValidator(options) {
 			return true;
 		},
-		async handler(args: {}) {
+		async handler(args) {
 			logger.info('Fetching personalizations');
 			const API_ENDPOINT = '/api/personalizations';
 			const response = await fetch(API_ENDPOINT);
@@ -84,21 +60,18 @@ const createRenderPersonalizations = ({
 				logger.error('Failed to fetch personalizations', response.statusText);
 				return [];
 			}
-			const personalizations = (await response.json()) as APIPersonalization[];
+			const personalizations = await response.json();
 			// TODO: render the personalizations
 			return personalizations;
 		},
 	};
 };
-
-export const createAlloy = (instanceName: string) => {
+export const createAlloy = (instanceName) => {
 	const logger = createLogger({ console, instanceName });
 	// TODO: create a datastore to save options and configurations
-
 	const commandDependencies = {
 		logger,
 	};
-
 	const commands = [
 		createConfigure(commandDependencies),
 		createSendEvent(commandDependencies),
@@ -106,12 +79,12 @@ export const createAlloy = (instanceName: string) => {
 		// TODO: implement "getVersion" command
 		// TODO: implement "clearCookie" command
 	];
-	const commandRegistry = new Map<string, Command>();
+	const commandRegistry = new Map();
 	for (const command of commands) {
 		commandRegistry.set(command.name, command);
 	}
 	logger.info('Alloy instance created', { instanceName });
-	return async (commandName: string, ...args: unknown[]): Promise<void> => {
+	return async (commandName, ...args) => {
 		const command = commandRegistry.get(commandName);
 		if (!command) {
 			logger.error('Command not found', commandName);
@@ -125,21 +98,17 @@ export const createAlloy = (instanceName: string) => {
 		return command.handler(args);
 	};
 };
-
-function isStringArr(arr: unknown): arr is string[] {
-	return Array.isArray(arr) && arr.every(el => typeof el === "string");
+function isStringArr(arr) {
+	return Array.isArray(arr) && arr.every((el) => typeof el === 'string');
 }
-
 function init() {
 	const instancesNames = window.__alloyNS;
 	if (!isStringArr(instancesNames)) {
-		throw new Error("window.__alloyNS must be of type Array<string>");
+		throw new Error('window.__alloyNS must be of type Array<string>');
 	}
-
 	for (const name of instancesNames) {
 		window[name] = createAlloy(name);
 		document.dispatchEvent(new Event(`alloy:${name}:ready`));
 	}
 }
-
 init();
