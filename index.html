@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alloy Doodads - Premium Metal Crafts</title>
+  <script type="module" src="./alloy-mini.js"></script>
+  <script type="module" src="./marketing.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+        
+    }
+    
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.6); }
+    }
+    
+    .shimmer {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .shimmer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      animation: shimmer 2s infinite;
+    }
+    
+    .float-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    .pulse-glow {
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 scroll-smooth">
+  <!-- Header -->
+  <header class="bg-white/80 backdrop-blur-md shadow-lg border-b border-white/20 sticky top-0 z-50">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center group">
+          <h1
+            class="text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent group-hover:from-purple-600 group-hover:via-blue-600 group-hover:to-indigo-600 transition-all duration-500">
+            Alloy Doodads</h1>
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+            class="ml-2 text-blue-600 group-hover:text-purple-600 transition-colors duration-300 group-hover:rotate-12 transform"><!-- Icon from MingCute Icon by MingCute Design - https://github.com/Richard9394/MingCute/blob/main/LICENSE -->
+            <g fill="none">
+              <path
+                d="m12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036q-.016-.004-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092q.019.005.029-.008l.004-.014l-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z" />
+              <path fill="currentColor"
+                d="m7.079 5.662l-.051-.048a1 1 0 0 0-1.414 1.414l.048.05c-1.716 2.007-2.807 4.559-2.42 7.24a1 1 0 0 0 1.682.517c.797-.949 1.6-1.89 2.465-2.778a21 21 0 0 1 1.568-1.47l7.618 8.108a1 1 0 0 0 1.436.023l.707-.707a1 1 0 0 0-.023-1.436l-8.108-7.618a22 22 0 0 1 1.47-1.568c.86-.838 1.768-1.617 2.69-2.386a1 1 0 0 0-.43-1.762c-2.68-.386-5.232.705-7.238 2.421" />
+            </g>
+          </svg>
+        </div>
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-baseline space-x-4">
+            <a href="#products"
+              class="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium relative group transition-colors duration-300">
+              Products
+              <span
+                class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
+            </a>
+            <a href="#about"
+              class="text-gray-500 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium relative group transition-colors duration-300">
+              About
+              <span
+                class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
+            </a>
+            <a href="#contact"
+              class="text-gray-500 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium relative group transition-colors duration-300">
+              Contact
+              <span
+                class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
+            </a>
+          </div>
+        </div>
+        <div class="flex items-center space-x-4">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+            class="text-gray-600 hover:text-blue-600 transition-colors duration-300 hover:scale-110 transform cursor-pointer"><!-- Icon from MingCute Icon by MingCute Design - https://github.com/Richard9394/MingCute/blob/main/LICENSE -->
+            <g fill="none">
+              <path d="M0 0h24v24H0z" />
+              <path fill="currentColor"
+                d="M10.5 2a8.5 8.5 0 0 1 6.676 13.762l3.652 3.652a1 1 0 0 1-1.414 1.414l-3.652-3.652A8.5 8.5 0 1 1 10.5 2m0 2a6.5 6.5 0 1 0 0 13a6.5 6.5 0 0 0 0-13m0 1a5.5 5.5 0 1 1 0 11a5.5 5.5 0 0 1 0-11" />
+            </g>
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+            class="text-gray-600 hover:text-blue-600 transition-colors duration-300 hover:scale-110 transform cursor-pointer"><!-- Icon from MingCute Icon by MingCute Design - https://github.com/Richard9394/MingCute/blob/main/LICENSE -->
+            <g fill="none">
+              <path
+                d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z" />
+              <path fill="currentColor"
+                d="M12 13c2.396 0 4.575.694 6.178 1.672c.8.488 1.484 1.064 1.978 1.69c.486.615.844 1.351.844 2.138c0 .845-.411 1.511-1.003 1.986c-.56.45-1.299.748-2.084.956c-1.578.417-3.684.558-5.913.558s-4.335-.14-5.913-.558c-.785-.208-1.524-.506-2.084-.956C3.41 20.01 3 19.345 3 18.5c0-.787.358-1.523.844-2.139c.494-.625 1.177-1.2 1.978-1.69C7.425 13.695 9.605 13 12 13m0-11a5 5 0 1 1 0 10a5 5 0 0 1 0-10" />
+            </g>
+          </svg>
+          <button
+            class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl pulse-glow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+              class="inline mr-2"><!-- Icon from MingCute Icon by MingCute Design - https://github.com/Richard9394/MingCute/blob/main/LICENSE -->
+              <g fill="none">
+                <path
+                  d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z" />
+                <path fill="currentColor"
+                  d="M9 20a1 1 0 1 1 0 2a1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2a1 1 0 0 1 0-2M2.2 2.9a1 1 0 0 1 1.295-.269l.105.07l1.708 1.28a2 2 0 0 1 .653.848l.06.171h12.846a2 2 0 0 1 1.998 2.1l-.013.148l-.457 3.655a5 5 0 0 1-4.32 4.34l-.226.023l-7.313.61l.26 1.124H17.5a1 1 0 0 1 .117 1.993L17.5 19H8.796a2 2 0 0 1-1.906-1.393l-.043-.157l-2.74-11.87L2.4 4.3a1 1 0 0 1-.2-1.4" />
+              </g>
+            </svg>
+            Cart (0)
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>
+    <div class="absolute inset-0">
+      <div class="absolute top-1/4 left-1/4 w-32 h-32 bg-blue-500/10 rounded-full blur-xl float-animation"></div>
+      <div class="absolute top-3/4 right-1/4 w-24 h-24 bg-purple-500/10 rounded-full blur-xl float-animation"
+        style="animation-delay: 1s;"></div>
+      <div class="absolute top-1/2 left-3/4 w-16 h-16 bg-indigo-500/10 rounded-full blur-xl float-animation"
+        style="animation-delay: 2s;"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative z-10">
+      <div class="text-center">
+        <h2
+          class="text-4xl font-extrabold sm:text-5xl bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
+          Premium Metal Doodads
+        </h2>
+        <p class="mt-4 text-xl text-gray-300 max-w-3xl mx-auto">
+          Handcrafted metal artifacts for the discerning collector. Each piece is forged with precision and passion.
+        </p>
+        <div class="mt-8">
+          <a href="#products"
+            class="bg-gradient-to-r from-white to-blue-50 text-gray-900 px-8 py-3 rounded-lg text-lg font-medium hover:from-blue-50 hover:to-white transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-blue-500/25 shimmer inline-block">
+            Shop Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section id="products" class="py-16 relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/30 to-transparent"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-12">
+        <h2
+          class="text-3xl font-extrabold bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 bg-clip-text text-transparent">
+          Featured Metal Doodads</h2>
+        <p class="mt-4 text-lg text-gray-600">Discover our most popular handcrafted metal pieces</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Product 1 -->
+        <div
+          class="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-white/50 group">
+          <div class="relative overflow-hidden">
+            <img src="https://picsum.photos/400/300?random=1" alt="Copper Spiral Doodad"
+              class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+              Copper Spiral Doodad</h3>
+            <p class="mt-2 text-gray-600">A mesmerizing copper spiral that catches light beautifully</p>
+            <div class="mt-4 flex items-center justify-between">
+              <span
+                class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">$49.99</span>
+              <button
+                class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 py-2 rounded-lg hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div
+          class="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-white/50 group">
+          <div class="relative overflow-hidden">
+            <img src="https://picsum.photos/400/300?random=2" alt="Steel Geometric Widget"
+              class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+              Steel Geometric Widget</h3>
+            <p class="mt-2 text-gray-600">Precision-cut geometric patterns in brushed steel</p>
+            <div class="mt-4 flex items-center justify-between">
+              <span
+                class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">$79.99</span>
+              <button
+                class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 py-2 rounded-lg hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div
+          class="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-white/50 group">
+          <div class="relative overflow-hidden">
+            <img src="https://picsum.photos/400/300?random=3" alt="Brass Ornamental Thingamajig"
+              class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+              Brass Ornamental Thingamajig</h3>
+            <p class="mt-2 text-gray-600">Intricate brass work with vintage appeal</p>
+            <div class="mt-4 flex items-center justify-between">
+              <span
+                class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">$129.99</span>
+              <button
+                class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 py-2 rounded-lg hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div
+          class="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-white/50 group">
+          <div class="relative overflow-hidden">
+            <img src="https://picsum.photos/400/300?random=4" alt="Aluminum Abstract Gadget"
+              class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+              Aluminum Abstract Gadget</h3>
+            <p class="mt-2 text-gray-600">Modern abstract design in lightweight aluminum</p>
+            <div class="mt-4 flex items-center justify-between">
+              <span
+                class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">$89.99</span>
+              <button
+                class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 py-2 rounded-lg hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div
+          class="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-white/50 group">
+          <div class="relative overflow-hidden">
+            <img src="https://picsum.photos/400/300?random=5" alt="Titanium Minimalist Doohickey"
+              class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+              Titanium Minimalist Doohickey</h3>
+            <p class="mt-2 text-gray-600">Sleek titanium piece with clean lines</p>
+            <div class="mt-4 flex items-center justify-between">
+              <span
+                class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">$199.99</span>
+              <button
+                class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 py-2 rounded-lg hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div
+          class="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-white/50 group">
+          <div class="relative overflow-hidden">
+            <img src="https://picsum.photos/400/300?random=6" alt="Iron Rustic Whatsit"
+              class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+              Iron Rustic Whatsit</h3>
+            <p class="mt-2 text-gray-600">Weathered iron with authentic patina finish</p>
+            <div class="mt-4 flex items-center justify-between">
+              <span
+                class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">$69.99</span>
+              <button
+                class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 py-2 rounded-lg hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="bg-gradient-to-r from-white via-blue-50 to-purple-50 py-16 relative overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="absolute top-0 left-1/4 w-64 h-64 bg-blue-200/20 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 right-1/4 w-64 h-64 bg-purple-200/20 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-12">
+        <h2
+          class="text-3xl font-extrabold bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 bg-clip-text text-transparent">
+          Why Choose Alloy Doodads?</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center group hover:scale-105 transition-transform duration-300">
+          <div class="flex justify-center mb-4">
+            <div
+              class="p-4 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full shadow-lg group-hover:shadow-xl group-hover:shadow-blue-500/25 transition-all duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                class="text-white"><!-- Icon from MingCute Icon by MingCute Design - https://github.com/Richard9394/MingCute/blob/main/LICENSE -->
+                <g fill="none" fill-rule="evenodd">
+                  <path
+                    d="m12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036q-.016-.004-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092q.019.005.029-.008l.004-.014l-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z" />
+                  <path fill="currentColor"
+                    d="M6 3a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h4v12a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1V9h4a1 1 0 0 0 1-1V7a1 1 0 0 0-.293-.707l-.657-.657A9 9 0 0 0 12.686 3z" />
+                </g>
+              </svg>
+            </div>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+            Handcrafted Quality</h3>
+          <p class="mt-2 text-gray-600">Each piece is meticulously crafted by skilled artisans using traditional
+            techniques.</p>
+        </div>
+
+        <div class="text-center group hover:scale-105 transition-transform duration-300">
+          <div class="flex justify-center mb-4">
+            <div
+              class="p-4 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full shadow-lg group-hover:shadow-xl group-hover:shadow-blue-500/25 transition-all duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                class="text-white"><!-- Icon from MingCute Icon by MingCute Design - https://github.com/Richard9394/MingCute/blob/main/LICENSE -->
+                <g fill="none" fill-rule="evenodd">
+                  <path
+                    d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z" />
+                  <path fill="currentColor"
+                    d="M11.298 2.195a2 2 0 0 1 1.404 0l7 2.625A2 2 0 0 1 21 6.693v5.363a9 9 0 0 1-4.975 8.05l-3.354 1.677a1.5 1.5 0 0 1-1.342 0l-3.354-1.677A9 9 0 0 1 3 12.056V6.693A2 2 0 0 1 4.298 4.82z" />
+                </g>
+              </svg>
+            </div>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+            Premium Materials</h3>
+          <p class="mt-2 text-gray-600">We use only the finest metals, sourced responsibly and tested for quality.</p>
+        </div>
+
+        <div class="text-center group hover:scale-105 transition-transform duration-300">
+          <div class="flex justify-center mb-4">
+            <div
+              class="p-4 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full shadow-lg group-hover:shadow-xl group-hover:shadow-blue-500/25 transition-all duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                class="text-white"><!-- Icon from MingCute Icon by MingCute Design - https://github.com/Richard9394/MingCute/blob/main/LICENSE -->
+                <g fill="none">
+                  <path
+                    d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z" />
+                  <path fill="currentColor"
+                    d="M15 4a2 2 0 0 1 2 2v1h1.52a2 2 0 0 1 1.561.75l1.48 1.851a2 2 0 0 1 .439 1.25V15a2 2 0 0 1-2 2h-1a3 3 0 1 1-6 0h-3a3 3 0 1 1-6 0a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zM7 16a1 1 0 1 0 0 2a1 1 0 0 0 0-2m9 0a1 1 0 1 0 0 2a1 1 0 0 0 0-2m2.52-7H17v4h3v-2.15z" />
+                </g>
+              </svg>
+            </div>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">Fast
+            Shipping</h3>
+          <p class="mt-2 text-gray-600">Quick and secure delivery to your doorstep, with tracking included.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="bg-gradient-to-br from-gray-100 via-blue-50 to-white py-16 relative overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="absolute top-1/4 right-1/4 w-32 h-32 bg-blue-300/20 rounded-full blur-xl float-animation"></div>
+      <div class="absolute bottom-1/4 left-1/4 w-24 h-24 bg-purple-300/20 rounded-full blur-xl float-animation"
+        style="animation-delay: 1.5s;"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6">
+          <h2
+            class="text-3xl font-extrabold bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 bg-clip-text text-transparent">
+            About Alloy Doodads</h2>
+          <p class="text-lg text-gray-600 leading-relaxed">
+            Founded in 2020, Alloy Doodads began as a passion project to create unique metal artifacts that blur the
+            line between functional design and art. Our craftspeople combine traditional metalworking techniques with
+            modern design sensibilities.
+          </p>
+          <p class="text-lg text-gray-600 leading-relaxed">
+            Every doodad, widget, and thingamajig in our collection tells a story. Whether you're a collector, interior
+            designer, or someone who appreciates fine craftsmanship, our pieces add character to any space.
+          </p>
+          <div class="mt-8">
+            <a href="#contact"
+              class="text-blue-600 font-medium hover:text-purple-600 transition-colors duration-300 group">
+              Learn more about our process
+              <span class="inline-block transition-transform group-hover:translate-x-1 ml-1">→</span>
+            </a>
+          </div>
+        </div>
+        <div class="relative group">
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-500">
+          </div>
+          <img src="https://picsum.photos/600/400?random=7" alt="Artisan at work"
+            class="relative rounded-xl shadow-2xl group-hover:scale-105 transition-transform duration-500">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 py-16 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-blue-600/10 to-purple-600/10"></div>
+    <div class="absolute inset-0">
+      <div class="absolute top-1/4 left-1/3 w-32 h-32 bg-blue-400/10 rounded-full blur-2xl float-animation"></div>
+      <div class="absolute bottom-1/4 right-1/3 w-24 h-24 bg-purple-400/10 rounded-full blur-2xl float-animation"
+        style="animation-delay: 1s;"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center">
+        <h2
+          class="text-3xl font-extrabold bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
+          Stay Updated</h2>
+        <p class="mt-4 text-lg text-gray-300">
+          Get notified about new arrivals and exclusive offers
+        </p>
+        <div class="mt-8 flex justify-center">
+          <div class="flex w-full max-w-md relative group">
+            <input type="email" placeholder="Enter your email"
+              class="flex-grow px-4 py-3 rounded-l-lg border-0 focus:ring-2 focus:ring-blue-500 bg-white/90 backdrop-blur-sm shadow-lg group-hover:bg-white transition-all duration-300">
+            <button
+              class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-3 rounded-r-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+              Subscribe
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact" class="bg-gradient-to-br from-white via-gray-50 to-blue-50 py-12 border-t border-gray-200/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="col-span-1 md:col-span-2">
+          <h3 class="text-lg font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Alloy Doodads</h3>
+          <p class="mt-2 text-gray-600">
+            Premium handcrafted metal artifacts for collectors and design enthusiasts.
+          </p>
+          <div class="mt-4 flex space-x-4">
+            <a href="https://facebook.com/alloydoodads"
+              class="text-gray-400 hover:text-blue-600 transition-colors duration-300 transform hover:scale-110">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                viewBox="0 0 24 24"><!-- Icon from MingCute Icon by MingCute Design - https://github.com/Richard9394/MingCute/blob/main/LICENSE -->
+                <g fill="none">
+                  <path
+                    d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z" />
+                  <path fill="currentColor"
+                    d="M13.5 21.888C18.311 21.164 22 17.013 22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 5.013 3.689 9.165 8.5 9.888V15H9a1.5 1.5 0 0 1 0-3h1.5v-2A3.5 3.5 0 0 1 14 6.5h.5a1.5 1.5 0 0 1 0 3H14a.5.5 0 0 0-.5.5v2H15a1.5 1.5 0 0 1 0 3h-1.5z" />
+                </g>
+              </svg>
+            </a>
+            <a href="https://instagram.com/alloydoodads"
+              class="text-gray-400 hover:text-blue-600 transition-colors duration-300 transform hover:scale-110">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                viewBox="0 0 24 24"><!-- Icon from MingCute Icon by MingCute Design - https://github.com/Richard9394/MingCute/blob/main/LICENSE -->
+                <g fill="none">
+                  <path
+                    d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z" />
+                  <path fill="currentColor"
+                    d="M16 3a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8a5 5 0 0 1 5-5zm-4 5a4 4 0 1 0 0 8a4 4 0 0 0 0-8m0 2a2 2 0 1 1 0 4a2 2 0 0 1 0-4m4.5-3.5a1 1 0 1 0 0 2a1 1 0 0 0 0-2" />
+                </g>
+              </svg>
+            </a>
+            <a href="https://twitter.com/alloydoodads"
+              class="text-gray-400 hover:text-blue-600 transition-colors duration-300 transform hover:scale-110">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                viewBox="0 0 24 24"><!-- Icon from MingCute Icon by MingCute Design - https://github.com/Richard9394/MingCute/blob/main/LICENSE -->
+                <g fill="none">
+                  <path
+                    d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z" />
+                  <path fill="currentColor"
+                    d="M4.594 4.984a1 1 0 0 1 .941.429C7.011 7.572 8.783 8.47 10.75 8.674c.096-.841.323-1.672.75-2.404c.626-1.074 1.644-1.864 3.098-2.156c2.01-.404 3.54.324 4.427 1.215l1.792-.335a1 1 0 0 1 1.053 1.478l-1.72 3.022c.157 4.361-1.055 7.405-3.639 9.502c-1.37 1.112-3.332 1.743-5.485 1.938c-2.17.196-4.623-.041-7.061-.753a1 1 0 0 1 .007-1.922c1.226-.349 2.16-.65 3.003-1.177c-1.199-.636-2.082-1.468-2.707-2.416c-.868-1.318-1.19-2.788-1.254-4.113S3.141 8 3.343 7.115c.115-.505.249-1.011.434-1.495a1 1 0 0 1 .818-.636Z" />
+                </g>
+              </svg>
+            </a>
+            <a href="https://youtube.com/alloydoodads"
+              class="text-gray-400 hover:text-blue-600 transition-colors duration-300 transform hover:scale-110">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                viewBox="0 0 24 24"><!-- Icon from MingCute Icon by MingCute Design - https://github.com/Richard9394/MingCute/blob/main/LICENSE -->
+                <g fill="none" fill-rule="evenodd">
+                  <path
+                    d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z" />
+                  <path fill="currentColor"
+                    d="M12 4c.855 0 1.732.022 2.582.058l1.004.048l.961.057l.9.061l.822.064a3.8 3.8 0 0 1 3.494 3.423l.04.425l.075.91c.07.943.122 1.971.122 2.954s-.052 2.011-.122 2.954l-.075.91l-.04.425a3.8 3.8 0 0 1-3.495 3.423l-.82.063l-.9.062l-.962.057l-1.004.048A62 62 0 0 1 12 20a62 62 0 0 1-2.582-.058l-1.004-.048l-.961-.057l-.9-.062l-.822-.063a3.8 3.8 0 0 1-3.494-3.423l-.04-.425l-.075-.91A41 41 0 0 1 2 12c0-.983.052-2.011.122-2.954l.075-.91l.04-.425A3.8 3.8 0 0 1 5.73 4.288l.821-.064l.9-.061l.962-.057l1.004-.048A62 62 0 0 1 12 4m-2 5.575v4.85c0 .462.5.75.9.52l4.2-2.425a.6.6 0 0 0 0-1.04l-4.2-2.424a.6.6 0 0 0-.9.52Z" />
+                </g>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold text-gray-900">Quick Links</h3>
+          <ul class="mt-2 space-y-2">
+            <li><a href="#products"
+                class="text-gray-600 hover:text-blue-600 transition-colors duration-300">Products</a></li>
+            <li><a href="#about" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">About</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">Shipping</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">Returns</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold text-gray-900">Contact</h3>
+          <ul class="mt-2 space-y-2 text-gray-600">
+            <li>hello@alloydoodads.com</li>
+            <li>1-800-DOODADS</li>
+            <li>123 Metalworks Ave</li>
+            <li>Craftsman City, CC 12345</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-8 pt-8 border-t border-gray-200 text-center text-gray-500">
+        <p>&copy; 2024 Alloy Doodads. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
